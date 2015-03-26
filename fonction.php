@@ -7,8 +7,8 @@ $bool1 = false;
 	$tabmot1 = array();
 	$tabmot2 = array();
 
-	$size_mot1 =strlen($mot1);
-	$size_mot2 =strlen($mot2);
+	//$size_mot1 =strlen($mot1);
+	//$size_mot2 =strlen($mot2);
 
 	//fonction remplacement des caracteres spéciaux
     function removeSpecCar ($text) {
@@ -24,18 +24,18 @@ $bool1 = false;
  
         $text = strtr ($text, $alphabet);
  
-        // replace all non letters or digits by -
+        // onremplace tout ce qui n'est pas lettre par vide
         $text = preg_replace('/\W+/', '', $text);
  
         return $text;
     }
     $string2 = removeSpecCar($mot2);
-    echo  $string2; echo " taille  "; echo strlen($string2); echo " et ";
+    echo  $string2; echo " :taille=  "; echo strlen($string2); echo " et ";
 
 	$string1 = removeSpecCar($mot2);
-	echo $string1; echo " taille  ";echo strlen($string1); echo ";  ";
+	echo $string1; echo " :taille=  ";echo strlen($string1); echo "  ";
  
-  //on verifie d'abord si les 2 mots ont la meme longeur
+  //on verifie d'abord si les 2 mots ont la meme longueur
 	if (strlen($string1)  !=  strlen($string2) ) {
 		//echo strlen($mot1);
 		//echo strlen($string2);
@@ -43,15 +43,14 @@ $bool1 = false;
 	}else{
 		//on conertis en tableau les chaine avec la fonction str_spilt
 		$tabmot1 = str_split($string1);
-		echo count($tabmot1);
-		echo " et ";
+		//echo count($tabmot1);	echo " et ";
 		//on recupere le contenu de String2 dans un tableaa
 		$tabmot2 = str_split($string2);
-		echo count( $tabmot2);
+		//echo count( $tabmot2);
 		//var_dump($tabmot1);
 
 
-		//meme taille alors on verifie pr chaq caractere l nombre d'occcurence du caractere dans mot1
+	//meme taille alors on verifie pr chaq caractere l nombre d'occcurence du caractere dans mot1
 
         // on parcour avec foreach les occurances des tableaux 
         foreach ($tabmot1 as $value) {
@@ -61,7 +60,7 @@ $bool1 = false;
         	
         	//echo $val2;
 
-        	if (substr_count($string1, $value) != substr_count($string2, $val2) ){
+        if (substr_count($string1, $value) != substr_count($string2, $val2) ){
         		//echo "here";
         		//return "not okk";
         		 $bool1 = false;
